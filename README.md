@@ -1,6 +1,6 @@
 # Comment Crunch
 
-Comment Crunch is a web application that analyzes YouTube comments using AI to extract key insights, sentiment, and trends. The application uses the YouTube API to fetch comments and OpenAI's GPT-4o to provide a comprehensive analysis.
+Comment Crunch is a web application that analyzes YouTube comments using AI to extract key insights, sentiment, and trends. The application uses the YouTube API to fetch comments and can use either OpenAI's GPT models or Google's Gemini models to provide a comprehensive analysis.
 
 ## Features
 
@@ -9,12 +9,15 @@ Comment Crunch is a web application that analyzes YouTube comments using AI to e
 - Highlight positive and negative comments with direct quotes
 - Identify interesting insights and questions from viewers
 - Clean, modern UI with responsive design
+- Support for multiple LLM providers (OpenAI and Google Gemini)
+- Switch between providers via environment variable
 
 ## Prerequisites
 
 - Node.js 18+ and npm
 - YouTube Data API key
-- OpenAI API key with access to GPT-4o
+- OpenAI API key with access to GPT-4o (if using OpenAI)
+- Google AI API key with access to Gemini models (if using Gemini)
 
 ## Getting Started
 
@@ -36,8 +39,14 @@ npm install
 Create a `.env.local` file in the root directory with your API keys:
 
 ```
+# Required API Keys
 YOUTUBE_API_KEY=your_youtube_api_key_here
 OPENAI_API_KEY=your_openai_api_key_here
+GOOGLE_API_KEY=your_google_api_key_here
+
+# LLM Configuration
+# Options for PREFERRED_LLM_PROVIDER: openai, gemini
+PREFERRED_LLM_PROVIDER=openai
 ```
 
 You can use the `.env.local.example` file as a template.
@@ -62,13 +71,32 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
    - Interesting insights or questions
    - Recommendations based on the comments
 
+## Configuring LLM Provider
+
+Comment Crunch supports the following LLM providers:
+
+### OpenAI (Default)
+
+Uses GPT-4o for generating high-quality comment analysis.
+
+### Google Gemini
+
+Uses Gemini 1.5 Flash for efficient and effective comment analysis.
+
+To change the LLM provider, update the corresponding environment variable in your `.env.local` file:
+
+```
+PREFERRED_LLM_PROVIDER=openai|gemini
+```
+
 ## Technologies Used
 
 - Next.js 14
 - React 19
 - TypeScript
 - YouTube Data API
-- OpenAI API (GPT-4o)
+- OpenAI API (GPT models)
+- Google Generative AI API (Gemini models)
 - Tailwind CSS
 
 ## License
@@ -78,5 +106,5 @@ This project is licensed under the MIT License.
 ## Acknowledgements
 
 - Built with Next.js
-- Powered by OpenAI's GPT-4o
+- Powered by OpenAI's GPT models and Google's Gemini models
 - YouTube Data API for comment retrieval
