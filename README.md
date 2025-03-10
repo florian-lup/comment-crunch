@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Comment Crunch
+
+Comment Crunch is a web application that analyzes YouTube comments using AI to extract key insights, sentiment, and trends. The application uses the YouTube API to fetch comments and OpenAI's GPT-4o to provide a comprehensive analysis.
+
+## Features
+
+- Fetch comments from any YouTube video by URL
+- Extract and analyze comment sentiment and themes
+- Highlight positive and negative comments with direct quotes
+- Identify interesting insights and questions from viewers
+- Clean, modern UI with responsive design
+
+## Prerequisites
+
+- Node.js 18+ and npm
+- YouTube Data API key
+- OpenAI API key with access to GPT-4o
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/comment-crunch.git
+cd comment-crunch
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file in the root directory with your API keys:
+
+```
+YOUTUBE_API_KEY=your_youtube_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+You can use the `.env.local.example` file as a template.
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Use
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Enter a YouTube video URL in the input field
+2. Click "Analyze" to process the comments
+3. Wait for the analysis to complete
+4. Review the generated insights, which include:
+   - Overall sentiment and themes
+   - Key positive points with quotes
+   - Key negative points with quotes
+   - Interesting insights or questions
+   - Recommendations based on the comments
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 14
+- React 19
+- TypeScript
+- YouTube Data API
+- OpenAI API (GPT-4o)
+- Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the MIT License.
 
-## Deploy on Vercel
+## Acknowledgements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Built with Next.js
+- Powered by OpenAI's GPT-4o
+- YouTube Data API for comment retrieval
