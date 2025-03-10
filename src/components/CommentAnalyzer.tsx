@@ -80,54 +80,73 @@ export function CommentAnalyzer() {
   
   return (
     <div className="w-full max-w-3xl mx-auto mb-16">
-      <Card className="overflow-hidden border-0 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-b border-slate-100">
-          <CardTitle className="text-blue-800">Analyze YouTube Comments</CardTitle>
-          <CardDescription className="text-blue-600/80">
-            Paste a YouTube video URL to get AI-powered insights from the comments
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Input
-                placeholder="https://www.youtube.com/watch?v=..."
-                value={youtubeUrl}
-                onChange={(e) => setYoutubeUrl(e.target.value)}
-                className="flex-1"
-              />
-              <Button 
-                type="submit" 
-                disabled={isLoading} 
-                variant="primary" 
-                className="whitespace-nowrap"
-                onClick={(e) => {
-                  e.preventDefault();
-                  analyzeComments();
-                }}
-              >
-                {isLoading ? <LoadingSpinner size="sm" className="mr-2" /> : null}
-                {isLoading ? 'Analyzing...' : 'Analyze Comments'}
-              </Button>
-            </div>
-            
-            {error && (
-              <div className="bg-red-50 border border-red-200 rounded-md p-3 text-sm text-red-600">
-                {error}
+      <div className="custom-border-gradient card-hover-effect">
+        <Card className="glassmorphism border-0">
+          <CardHeader className="border-b border-slate-100/60">
+            <CardTitle className="text-gradient-2 font-bold">Analyze YouTube Comments</CardTitle>
+            <CardDescription className="text-slate-600">
+              Paste a YouTube video URL to get AI-powered insights from the comments
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="p-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex-1 relative">
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                  </div>
+                  <Input
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    value={youtubeUrl}
+                    onChange={(e) => setYoutubeUrl(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  disabled={isLoading} 
+                  variant="primary" 
+                  className="whitespace-nowrap gradient-bg text-white shadow-md hover:shadow-lg transition-all"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    analyzeComments();
+                  }}
+                >
+                  {isLoading ? <LoadingSpinner size="sm" className="mr-2" /> : null}
+                  {isLoading ? 'Analyzing...' : 'Analyze Comments'}
+                </Button>
               </div>
-            )}
-          </form>
-        </CardContent>
-      </Card>
+              
+              {error && (
+                <div className="bg-red-50 border border-red-200 rounded-md p-3 text-sm text-red-600 animate-fadeIn">
+                  <div className="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    {error}
+                  </div>
+                </div>
+              )}
+            </form>
+          </CardContent>
+        </Card>
+      </div>
       
       {result && (
         <div className="mt-8 animate-fadeIn">
-          <Card className="overflow-hidden border-0 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-slate-50 to-slate-100 border-b border-slate-100">
-              <CardTitle className="text-slate-800">{result.videoTitle}</CardTitle>
-              <CardDescription>
-                Comment Analysis Results
-              </CardDescription>
+          <Card className="overflow-hidden border border-slate-200/70 shadow-lg bg-white">
+            <CardHeader className="bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-slate-100">
+              <div>
+                <CardTitle className="text-slate-800 font-bold text-xl">{result.videoTitle}</CardTitle>
+                <CardDescription className="text-slate-600 mt-1">
+                  Comment Analysis Results
+                </CardDescription>
+              </div>
             </CardHeader>
             <CardContent className="p-6">
               <div className="prose prose-slate max-w-none">
