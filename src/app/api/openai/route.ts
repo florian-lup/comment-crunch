@@ -31,9 +31,7 @@ export async function POST(request: NextRequest) {
     ${commentsText}
     
     Please provide a concise summary of these comments with the following structure:
-    
-    # Comment Analysis for "${videoTitle}"
-    
+        
     ## Overall Sentiment and Themes
     (2-3 paragraphs about the general sentiment and main themes in the comments)
     
