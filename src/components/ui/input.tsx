@@ -22,11 +22,12 @@ Input.displayName = "Input"
 
 export interface YouTubeInputProps extends InputProps {
   onAnalyze?: () => void;
+  onAbort?: () => void;
   isLoading?: boolean;
 }
 
 const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
-  ({ className, onAnalyze, isLoading = false, ...props }, ref) => {
+  ({ className, onAnalyze, onAbort, isLoading = false, ...props }, ref) => {
     return (
       <div className={cn("flex flex-col sm:flex-row gap-3", className)} ref={ref}>
         <div className="flex-1 relative">
@@ -44,31 +45,35 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
         </div>
         <button 
           type="button" 
-          disabled={isLoading} 
-          className={`whitespace-nowrap flex items-center h-9 px-4 rounded-md relative ${isLoading ? 'bg-blue-50 text-blue-600/0 border border-blue-200' : 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 hover:border-blue-300'} shadow-none`}
-          onClick={onAnalyze}
+          className={`whitespace-nowrap flex items-center justify-center h-9 w-28 rounded-md relative ${!isLoading ? 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 hover:border-blue-300' : 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-300'} shadow-none transition-all duration-150`}
+          onClick={isLoading ? onAbort : onAnalyze}
         >
-          {!isLoading && (
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-4 w-4 mr-2" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2.5" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <polyline points="9 10 4 15 9 20"></polyline>
-              <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
-            </svg>
-          )}
-          <span>{isLoading ? 'Analyzing...' : 'Analyze Comments'}</span>
-          
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="animate-spin h-5 w-5 rounded-full border-2 border-blue-600 border-t-transparent"></div>
-            </div>
+          {!isLoading ? (
+            <>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-4 w-4 mr-2" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+                <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+                <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <span>Crunch</span>
+            </>
+          ) : (
+            <>
+              <div className="animate-spin h-4 w-4 mr-2 rounded-full border-2 border-red-600 border-t-transparent"></div>
+              <span>Abort</span>
+            </>
           )}
         </button>
       </div>
@@ -81,6 +86,7 @@ export interface YouTubeInputSectionProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onAnalyze: () => void;
+  onAbort?: () => void;
   isLoading: boolean;
   error: string | null;
   onSubmit: (e: React.FormEvent) => void;
@@ -94,6 +100,7 @@ const YouTubeInputSection = React.forwardRef<HTMLDivElement, YouTubeInputSection
     value, 
     onChange, 
     onAnalyze, 
+    onAbort,
     isLoading, 
     error, 
     onSubmit,
@@ -118,6 +125,7 @@ const YouTubeInputSection = React.forwardRef<HTMLDivElement, YouTubeInputSection
                 value={value}
                 onChange={onChange}
                 onAnalyze={onAnalyze}
+                onAbort={onAbort}
                 isLoading={isLoading}
               />
               

@@ -34,21 +34,54 @@ export async function POST(request: NextRequest) {
     (2-3 paragraphs about the general sentiment and main themes in the comments)
     
     ## Key Positive Points
-    - **"Direct quote from a commenter"** - @username (Add your brief analysis if relevant)
+    
+    - **"Direct quote from a commenter"** - @username
+      
+      *Add your brief analysis here explaining the significance of this comment*
+    
     - **"Another positive quote"** - @username
+      
+      *Add your brief analysis here*
+    
     - **"Another positive quote"** - @username
+      
+      *Add your brief analysis here*
     
     ## Criticism
-    - **"Direct quote highlighting criticism"** - @username (Add your brief analysis if relevant)
+    
+    - **"Direct quote highlighting criticism"** - @username
+      
+      *Add your brief analysis here explaining what this criticism means*
+    
     - **"Another negative quote"** - @username
+      
+      *Add your brief analysis here*
+    
     - **"Another negative quote"** - @username
+      
+      *Add your brief analysis here*
     
     ## Interesting Insights or Questions Raised
+    
     - **"Quote showing an interesting perspective"** - @username
+      
+      *Add your brief analysis here explaining why this insight is interesting*
+    
     - **"Another interesting quote or question"** - @username
+      
+      *Add your brief analysis here*
     
     Format the response in clean, well-structured Markdown using proper heading levels, bullet points, and emphasis for quotes and usernames.
-    Use bold for direct quotes and include the username of each commenter after their quote.
+    
+    Formatting guidelines:
+    1. Use ## for main section headings
+    2. Use bold (**text**) for direct quotes and usernames
+    3. Use @username format for usernames
+    4. Use italics (*text*) for your analysis of each quote
+    5. Make sure to add a blank line between the quote and your analysis
+    6. Make sure to include the most insightful and representative comments
+    7. For each quote, add a brief analysis in italics that explains the significance of the comment
+    8. If a comment has many likes, prioritize it and mention that it was popular
     `;
     
     // Get the model
