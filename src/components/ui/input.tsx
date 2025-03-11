@@ -130,9 +130,9 @@ const YouTubeInputSection = React.forwardRef<HTMLDivElement, YouTubeInputSection
               />
               
               {error && (
-                <div className="notion-callout animate-fadeIn mt-4">
-                  <div className="notion-callout-emoji">⚠️</div>
-                  <div className="text-sm">{error}</div>
+                <div className="bg-red-50 border border-red-100 rounded-md p-3 flex items-center gap-2 animate-fadeIn mt-4">
+                  <div className="text-red-500">⚠️</div>
+                  <div className="text-sm text-red-600">{error}</div>
                 </div>
               )}
             </form>

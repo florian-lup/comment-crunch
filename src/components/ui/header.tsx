@@ -15,7 +15,11 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
     tags = ["AI-Powered", "YouTube Analysis", "Instant Insights"],
     className 
   }, ref) => {
-    const tagColors = ["notion-tag-blue", "notion-tag-purple", "notion-tag-pink"];
+    const tagColors = [
+      "bg-blue-100 text-blue-700", 
+      "bg-purple-100 text-purple-700", 
+      "bg-pink-100 text-pink-700"
+    ];
     
     return (
       <div className={cn("mt-8", className)} ref={ref}>
@@ -29,13 +33,13 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
           {tags.map((tag, index) => (
             <span 
               key={tag} 
-              className={`notion-tag ${tagColors[index % tagColors.length]} py-1.5 px-3 text-sm`}
+              className={`rounded-md ${tagColors[index % tagColors.length]} py-1.5 px-3 text-sm`}
             >
               {tag}
             </span>
           ))}
         </div>
-        <div className="notion-divider mt-8 mb-6"></div>
+        <div className="h-px bg-gray-200 mt-8 mb-6"></div>
       </div>
     )
   }

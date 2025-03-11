@@ -5,7 +5,7 @@ import { Header } from "@/components/ui/header";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="flex-grow notion-container notion-page">
+      <div className="flex-grow container mx-auto">
         {/* Header */}
         <Header className="w-[868px] mx-auto" />
         

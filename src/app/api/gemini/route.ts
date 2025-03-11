@@ -81,7 +81,6 @@ export async function POST(request: NextRequest) {
     5. Make sure to add a blank line between the quote and your analysis
     6. Make sure to include the most insightful and representative comments
     7. For each quote, add a brief analysis in italics that explains the significance of the comment
-    8. If a comment has many likes, prioritize it and mention that it was popular
     `;
     
     // Get the model
