@@ -14,6 +14,14 @@ module.exports = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+      screens: {
+        'xs': '480px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-in-out',
       },

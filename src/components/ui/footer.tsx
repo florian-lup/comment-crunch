@@ -4,10 +4,10 @@ import Image from "next/image";
 export function Footer() {
   return (
     <footer className="w-full bg-white mt-auto py-4">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-center relative w-[868px] mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center relative w-full max-w-4xl">
           <div className="absolute -top-4 left-0 right-0 h-px bg-gray-200"></div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 mb-4 sm:mb-0">
             <div className="bg-gray-100 rounded-md p-1.5">
               <Image 
                 src="/logo.svg" 
@@ -20,16 +20,16 @@ export function Footer() {
               Comment Crunch © 2025
             </p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3 mr-2">
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex items-center gap-3 mr-0 sm:mr-2 mb-3 sm:mb-0">
+              <a href="#" className="text-xs sm:text-sm text-gray-500 hover:text-gray-800 transition-colors">
                 Privacy
               </a>
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
+              <a href="#" className="text-xs sm:text-sm text-gray-500 hover:text-gray-800 transition-colors">
                 Terms
               </a>
             </div>
-            <div className="flex items-center gap-3 border-l border-gray-200 pl-4">
+            <div className="flex items-center gap-3 border-t sm:border-t-0 sm:border-l border-gray-200 pt-3 sm:pt-0 sm:pl-4">
               <a href="https://x.com/?lang=en" className="text-gray-500 hover:text-gray-800 transition-colors" aria-label="X (Twitter)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M17.1761 4H19.9362L13.9061 10.7774L21 20H15.4456L11.0245 14.4253L6.03223 20H3.27084L9.73442 12.7254L3 4H8.6908L12.6779 9.0991L17.1761 4ZM16.2453 18.2662H17.7894L7.86325 5.6538H6.21768L16.2453 18.2662Z" />

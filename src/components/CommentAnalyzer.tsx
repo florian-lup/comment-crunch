@@ -99,7 +99,7 @@ export function CommentAnalyzer() {
   };
   
   return (
-    <div className="mb-16 mx-auto flex flex-col items-center">
+    <div className="mb-16 w-full max-w-4xl mx-auto">
       {/* Input Section */}
       <YouTubeInputSection
         value={youtubeUrl}
@@ -109,11 +109,11 @@ export function CommentAnalyzer() {
         isLoading={isLoading}
         error={error}
         onSubmit={handleSubmit}
-        className="w-[868px] mt-10"
+        className="mt-6 sm:mt-10"
       />
       
       {/* Results Section */}
-      <div className={`mt-8 ${result ? 'animate-fadeIn' : 'hidden'} w-[868px]`}>
+      <div className={`mt-6 sm:mt-8 ${result ? 'animate-fadeIn' : 'hidden'}`}>
         {result && (
           <AnalysisResult
             videoTitle={result.videoTitle}

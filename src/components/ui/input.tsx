@@ -45,7 +45,7 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
         </div>
         <button 
           type="button" 
-          className={`whitespace-nowrap flex items-center justify-center h-9 w-28 rounded-md relative ${!isLoading ? 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 hover:border-blue-300' : 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-300'} shadow-none transition-all duration-150`}
+          className={`whitespace-nowrap flex items-center justify-center h-9 w-full sm:w-28 rounded-md relative ${!isLoading ? 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 hover:border-blue-300' : 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-300'} shadow-none transition-all duration-150`}
           onClick={isLoading ? onAbort : onAnalyze}
         >
           {!isLoading ? (
@@ -109,17 +109,17 @@ const YouTubeInputSection = React.forwardRef<HTMLDivElement, YouTubeInputSection
     description = "Paste a YouTube video URL to get AI-powered insights from the comments"
   }, ref) => {
     return (
-      <div className={cn("w-full", className)} style={{ maxWidth: "100%" }} ref={ref}>
+      <div className={cn("w-full", className)} ref={ref}>
         <div className="w-full overflow-hidden border border-gray-200 rounded-md bg-white shadow-sm">
-          <div className="p-6 pb-3">
-            <h3 className="text-lg font-semibold leading-none tracking-tight mb-3">
+          <div className="p-4 sm:p-6 pb-2 sm:pb-3">
+            <h3 className="text-base sm:text-lg font-semibold leading-none tracking-tight mb-2 sm:mb-3">
               {title}
             </h3>
-            <p className="text-sm text-slate-500 mb-6">
+            <p className="text-xs sm:text-sm text-slate-500 mb-4 sm:mb-6">
               {description}
             </p>
           </div>
-          <div className="px-6 pb-6">
+          <div className="px-4 sm:px-6 pb-4 sm:pb-6">
             <form onSubmit={onSubmit} className="space-y-4">
               <YouTubeInput
                 value={value}
@@ -132,7 +132,7 @@ const YouTubeInputSection = React.forwardRef<HTMLDivElement, YouTubeInputSection
               {error && (
                 <div className="bg-red-50 border border-red-100 rounded-md p-3 flex items-center gap-2 animate-fadeIn mt-4">
                   <div className="text-red-500">⚠️</div>
-                  <div className="text-sm text-red-600">{error}</div>
+                  <div className="text-xs sm:text-sm text-red-600">{error}</div>
                 </div>
               )}
             </form>
