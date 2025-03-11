@@ -10,6 +10,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Comment Crunch",
   description: "Extract key insights from YouTube comments using AI",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

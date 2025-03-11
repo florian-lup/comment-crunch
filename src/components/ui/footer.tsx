@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -7,10 +8,12 @@ export function Footer() {
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="bg-gray-100 rounded-md p-1.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.527 12.2659L12.0003 16.7659L5.47363 12.2659V5.26587L12.0003 0.765869L18.527 5.26587V12.2659Z" fill="#2e75cc" fillOpacity="0.3" />
-                <path d="M12.0003 16.7659L18.527 12.2659V5.26587L12.0003 0.765869V16.7659Z" fill="#2e75cc" fillOpacity="0.7" />
-              </svg>
+              <Image 
+                src="/logo.svg" 
+                alt="Comment Crunch Logo" 
+                width={16} 
+                height={16} 
+              />
             </div>
             <p className="text-sm text-gray-500">
               Comment Crunch © 2025
