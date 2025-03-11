@@ -3,9 +3,10 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-gray-200 bg-white mt-auto py-6">
+    <footer className="w-full bg-white mt-auto py-4">
       <div className="notion-container">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center relative">
+          <div className="absolute -top-4 left-0 right-0 h-px bg-gray-200"></div>
           <div className="flex items-center gap-2">
             <div className="bg-gray-100 rounded-md p-1.5">
               <Image 

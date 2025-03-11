@@ -78,9 +78,10 @@ export function CommentAnalyzer() {
   };
   
   return (
-    <div className="w-full max-w-3xl mx-auto mb-16">
-      <div>
-        <Card className="overflow-hidden border border-gray-200 shadow-sm">
+    <div className="mb-16 mx-auto flex flex-col items-center">
+      {/* Input Card */}
+      <div style={{ width: "868px", maxWidth: "100%" }}>
+        <Card className="w-full overflow-hidden border border-gray-200 shadow-sm">
           <CardHeader>
             <CardTitle>Analyze YouTube Comments</CardTitle>
             <CardDescription>
@@ -150,9 +151,10 @@ export function CommentAnalyzer() {
         </Card>
       </div>
       
-      {result && (
-        <div className="mt-8 animate-fadeIn">
-          <Card className="overflow-hidden border border-gray-200 shadow-sm">
+      {/* Results Card - Always render the container div */}
+      <div className={`mt-8 ${result ? 'animate-fadeIn' : 'hidden'}`} style={{ width: "868px", maxWidth: "100%" }}>
+        {result && (
+          <Card className="w-full overflow-hidden border border-gray-200 shadow-sm">
             <CardHeader>
               <div>
                 <CardTitle>{result.videoTitle}</CardTitle>
@@ -167,8 +169,8 @@ export function CommentAnalyzer() {
               </div>
             </CardContent>
           </Card>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 } 
