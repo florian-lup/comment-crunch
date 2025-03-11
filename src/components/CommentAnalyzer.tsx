@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import ReactMarkdown from 'react-markdown';
 
 export function CommentAnalyzer() {
@@ -42,8 +41,8 @@ export function CommentAnalyzer() {
       
       const commentsData = await commentsResponse.json();
       
-      // Step 2: Analyze comments using GPT-4o
-      const analysisResponse = await fetch('/api/openai', {
+      // Step 2: Analyze comments using the analyze endpoint
+      const analysisResponse = await fetch('/api/analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -80,19 +79,19 @@ export function CommentAnalyzer() {
   
   return (
     <div className="w-full max-w-3xl mx-auto mb-16">
-      <div className="custom-border-gradient card-hover-effect">
-        <Card className="glassmorphism border-0">
-          <CardHeader className="border-b border-slate-100/60">
-            <CardTitle className="text-gradient-2 font-bold">Analyze YouTube Comments</CardTitle>
-            <CardDescription className="text-slate-600">
+      <div>
+        <Card className="overflow-hidden border border-gray-200 shadow-sm">
+          <CardHeader>
+            <CardTitle>Analyze YouTube Comments</CardTitle>
+            <CardDescription>
               Paste a YouTube video URL to get AI-powered insights from the comments
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-6">
+          <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 relative">
-                  <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
                       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
@@ -108,28 +107,42 @@ export function CommentAnalyzer() {
                 <Button 
                   type="submit" 
                   disabled={isLoading} 
-                  variant="primary" 
-                  className="whitespace-nowrap gradient-bg text-white shadow-md hover:shadow-lg transition-all"
+                  variant="default"
+                  className={`whitespace-nowrap flex items-center px-4 relative ${isLoading ? 'bg-blue-50 text-blue-600/0 border border-blue-200' : 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 hover:border-blue-300'} shadow-none`}
                   onClick={(e) => {
                     e.preventDefault();
                     analyzeComments();
                   }}
                 >
-                  {isLoading ? <LoadingSpinner size="sm" className="mr-2" /> : null}
-                  {isLoading ? 'Analyzing...' : 'Analyze Comments'}
+                  {!isLoading && (
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-4 w-4 mr-2" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="9 10 4 15 9 20"></polyline>
+                      <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+                    </svg>
+                  )}
+                  <span>{isLoading ? 'Analyzing...' : 'Analyze Comments'}</span>
+                  
+                  {isLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="animate-spin h-5 w-5 rounded-full border-2 border-blue-600 border-t-transparent"></div>
+                    </div>
+                  )}
                 </Button>
               </div>
               
               {error && (
-                <div className="bg-red-50 border border-red-200 rounded-md p-3 text-sm text-red-600 animate-fadeIn">
-                  <div className="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="12"></line>
-                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                    </svg>
-                    {error}
-                  </div>
+                <div className="notion-callout animate-fadeIn">
+                  <div className="notion-callout-emoji">⚠️</div>
+                  <div className="text-sm">{error}</div>
                 </div>
               )}
             </form>
@@ -139,17 +152,17 @@ export function CommentAnalyzer() {
       
       {result && (
         <div className="mt-8 animate-fadeIn">
-          <Card className="overflow-hidden border border-slate-200/70 shadow-lg bg-white">
-            <CardHeader className="bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-slate-100">
+          <Card className="overflow-hidden border border-gray-200 shadow-sm">
+            <CardHeader>
               <div>
-                <CardTitle className="text-slate-800 font-bold text-xl">{result.videoTitle}</CardTitle>
-                <CardDescription className="text-slate-600 mt-1">
+                <CardTitle>{result.videoTitle}</CardTitle>
+                <CardDescription>
                   Comment Analysis Results
                 </CardDescription>
               </div>
             </CardHeader>
-            <CardContent className="p-6">
-              <div className="prose prose-slate max-w-none">
+            <CardContent>
+              <div className="prose max-w-none">
                 <ReactMarkdown>{result.analysis}</ReactMarkdown>
               </div>
             </CardContent>

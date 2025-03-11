@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     
     Please provide a concise summary of these comments with the following structure:
         
-    ## Overall Sentiment and Themes
+    ## Overall Sentiment
     (2-3 paragraphs about the general sentiment and main themes in the comments)
     
     ## Key Positive Points
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     - **"Another positive quote"** - @username
     - **"Another positive quote"** - @username
     
-    ## Key Negative Points or Criticisms
+    ## Criticism
     - **"Direct quote highlighting criticism"** - @username (Add your brief analysis if relevant)
     - **"Another negative quote"** - @username
     - **"Another negative quote"** - @username
