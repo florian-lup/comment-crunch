@@ -12,7 +12,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
   ({ 
     title = "Extract insights from YouTube comments",
     description = "Use AI to analyze and summarize YouTube comment sections quickly",
-    tags = ["AI-Powered", "YouTube Analysis", "Instant Insights"],
+    tags = ["AI-Powered", "YouTube Analysis", "Fast Insights"],
     className 
   }, ref) => {
     const tagColors = [

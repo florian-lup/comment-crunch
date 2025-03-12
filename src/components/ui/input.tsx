@@ -72,7 +72,7 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
           ) : (
             <>
               <div className="animate-spin h-4 w-4 mr-2 rounded-full border-2 border-red-600 border-t-transparent"></div>
-              <span>Abort</span>
+              <span>Stop</span>
             </>
           )}
         </button>
