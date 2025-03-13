@@ -31,39 +31,29 @@ export async function POST(request: NextRequest) {
     Please provide a comprehensive analysis of these comments with the following structure:
         
     ## Overall Sentiment Analysis
-    (2-3 paragraphs describing the general sentiment. Classify the overall sentiment as primarily positive, negative, mixed, or neutral. Include approximate percentages if possible. Identify the main themes and topics discussed.)
+    (Write 1-2 paragraphs describing the general sentiment. Classify the overall sentiment as primarily positive, negative, mixed, or neutral. Include approximate percentages if possible. Identify the main themes and topics discussed.)
     
     ## Audience Engagement Overview
-    - Estimate the level of engagement (high, medium, low)
-    - Identify any patterns in how viewers are engaging with the content
+    - Level of engagement (high, medium, low)
+    - Key patterns in viewer engagement
     
-    ## Key Positive Feedback (3-5 most significant points)
+    ## Key Positive Feedback (2-3 comments)
     
-    - **"Direct quote from a commenter"** - @username
-      
-      *Provide analysis explaining why this feedback is valuable and how it relates to the video's content*
+    > **Direct quote from a commenter** - **@username** - *Analysis explaining why this feedback is valuable*
     
-    ## Areas for Improvement (3-5 most constructive criticisms)
+    ## Areas for Improvement (2-3 comments)
     
-    - **"Direct quote highlighting criticism"** - @username
-      
-      *Analyze what this criticism suggests about potential improvements for future content*
+    > **Direct quote highlighting criticism** - **@username** - *Analysis of what this criticism suggests about potential improvements*
     
-    ## Interesting Insights & Questions (3-5 most thought-provoking points)
+    ## Questions or requests from viewers (2-3 comments) 
     
-    - **"Quote showing an interesting perspective"** - @username
-      
-      *Explain why this insight matters and how it might inform future content strategy*
-    
+    > **Question or request from a viewer** - **@username** - *Analysis of what this question or request suggests about potential improvements*
+        
     ## Content Opportunities
-    (1-2 paragraphs suggesting potential content ideas or topics that viewers seem interested in, based on their comments)
+    - 2-3 suggestions
     
     ## Summary
     (A brief concluding paragraph that summarizes the overall analysis and key takeaways)
-
-    ---
-    
-    Format your response in clean, well-structured Markdown using proper heading levels and emphasis for important points. For the comment quotes sections, maintain the format with dashes: "- **"quote"** - @username" followed by the analysis in italics.
     `;
     
     // Get the model
