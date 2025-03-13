@@ -17,75 +17,58 @@ export async function POST(request: NextRequest) {
     
     // Format comments for analysis
     const commentsText = comments.map(comment => 
-      `Author: ${comment.author}\nLikes: ${comment.likeCount}\nComment: ${comment.text}`
+      `Author: ${comment.author}\nComment: ${comment.text}`
     ).join('\n\n');
     
     // Prepare the prompt for Gemini
     const prompt = `
-    You are analyzing comments from the YouTube video titled: "${videoTitle}".
+    You are an expert YouTube content analyst tasked with analyzing comments from the YouTube video titled: "${videoTitle}".
     
     Here are the comments:
     
     ${commentsText}
     
-    Please provide a concise summary of these comments with the following structure:
+    Please provide a comprehensive analysis of these comments with the following structure:
         
-    ## Overall Sentiment
-    (2-3 paragraphs about the general sentiment and main themes in the comments)
+    ## Overall Sentiment Analysis
+    (2-3 paragraphs describing the general sentiment. Classify the overall sentiment as primarily positive, negative, mixed, or neutral. Include approximate percentages if possible. Identify the main themes and topics discussed.)
     
-    ## Key Positive Points
+    ## Audience Engagement Overview
+    - Estimate the level of engagement (high, medium, low)
+    - Identify any patterns in how viewers are engaging with the content
+    
+    ## Key Positive Feedback (3-5 most significant points)
     
     - **"Direct quote from a commenter"** - @username
       
-      *Add your brief analysis here explaining the significance of this comment*
+      *Provide analysis explaining why this feedback is valuable and how it relates to the video's content*
     
-    - **"Another positive quote"** - @username
-      
-      *Add your brief analysis here*
-    
-    - **"Another positive quote"** - @username
-      
-      *Add your brief analysis here*
-    
-    ## Criticism
+    ## Areas for Improvement (3-5 most constructive criticisms)
     
     - **"Direct quote highlighting criticism"** - @username
       
-      *Add your brief analysis here explaining what this criticism means*
+      *Analyze what this criticism suggests about potential improvements for future content*
     
-    - **"Another negative quote"** - @username
-      
-      *Add your brief analysis here*
-    
-    - **"Another negative quote"** - @username
-      
-      *Add your brief analysis here*
-    
-    ## Interesting Insights or Questions Raised
+    ## Interesting Insights & Questions (3-5 most thought-provoking points)
     
     - **"Quote showing an interesting perspective"** - @username
       
-      *Add your brief analysis here explaining why this insight is interesting*
+      *Explain why this insight matters and how it might inform future content strategy*
     
-    - **"Another interesting quote or question"** - @username
-      
-      *Add your brief analysis here*
+    ## Content Opportunities
+    (1-2 paragraphs suggesting potential content ideas or topics that viewers seem interested in, based on their comments)
     
-    Format the response in clean, well-structured Markdown using proper heading levels, bullet points, and emphasis for quotes and usernames.
+    ## Summary
+    (A brief concluding paragraph that summarizes the overall analysis and key takeaways)
+
+    ---
     
-    Formatting guidelines:
-    1. Use ## for main section headings
-    2. Use bold (**text**) for direct quotes and usernames
-    3. Use @username format for usernames
-    4. Use italics (*text*) for your analysis of each quote
-    5. Make sure to add a blank line between the quote and your analysis
-    6. Make sure to include the most insightful and representative comments
-    7. For each quote, add a brief analysis in italics that explains the significance of the comment
+    Format your response in clean, well-structured Markdown using proper heading levels and emphasis for important points. For the comment quotes sections, maintain the format with dashes: "- **"quote"** - @username" followed by the analysis in italics.
     `;
     
     // Get the model
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.0-flash" // Using Gemini 1.5 Flash
+      model: "gemini-2.0-flash" // Using Gemini 2.0 Flash
     });
     
     // Call Gemini API
