@@ -31,11 +31,11 @@ export async function POST(request: NextRequest) {
     Please provide a comprehensive analysis of these comments with the following structure:
         
     ## Overall Sentiment Analysis
-    (Write 1-2 paragraphs describing the general sentiment. Classify the overall sentiment as primarily positive, negative, mixed, or neutral. Include approximate percentages if possible. Identify the main themes and topics discussed.)
+    (Write 1-2 paragraphs describing the general sentiment. Classify the overall sentiment as primarily **positive**, **negative**, **mixed**, or **neutral**. Include approximate percentages if possible. Identify the main themes and topics discussed.)
     
     ## Audience Engagement Overview
-    - Level of engagement (high, medium, low)
-    - Key patterns in viewer engagement
+    * Level of engagement (high, medium, low)
+    * Key patterns in viewer engagement
     
     ## Key Positive Feedback (2-3 comments)
     
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     > **Question or request from a viewer** - **@username** - *Analysis of what this question or request suggests about potential improvements*
         
     ## Content Opportunities
-    - 2-3 suggestions
+    * 2-3 suggestions with bullet points
     
     ## Summary
     (A brief concluding paragraph that summarizes the overall analysis and key takeaways)

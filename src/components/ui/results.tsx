@@ -1,8 +1,8 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import ReactMarkdown from 'react-markdown';
-import { Check, Copy } from "lucide-react"; // Import icons for code block functionality
-import rehypeRaw from 'rehype-raw'; // Add this import for handling HTML in markdown
+import { Check, Copy } from "lucide-react";
+import rehypeRaw from 'rehype-raw';
 
 export interface AnalysisResultProps {
   videoTitle: string;
