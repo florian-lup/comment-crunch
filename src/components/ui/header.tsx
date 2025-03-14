@@ -1,12 +1,13 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import type { HeaderProps } from "@/types"
+import { UI_CONSTANTS } from "@/config"
 
 const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
   ({ 
-    title = "Extract insights from YouTube comments",
+    title = UI_CONSTANTS.APP_DESCRIPTION,
     description = "Use AI to analyze and summarize YouTube comment sections quickly",
-    tags = ["AI-Powered", "YouTube Analysis", "Fast Insights"],
+    tags = UI_CONSTANTS.DEFAULT_TAGS,
     className 
   }, ref) => {
     const tagColors = [

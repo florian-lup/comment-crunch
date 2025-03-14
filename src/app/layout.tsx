@@ -1,24 +1,32 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { UI_CONSTANTS } from "@/config";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: {
+    template: `%s | ${UI_CONSTANTS.APP_NAME}`,
+    default: UI_CONSTANTS.APP_NAME,
+  },
+  description: UI_CONSTANTS.APP_DESCRIPTION,
+  keywords: UI_CONSTANTS.DEFAULT_TAGS,
+  authors: [
+    {
+      name: "Comment Crunch Team",
+    },
+  ],
+  creator: "Comment Crunch Team",
+};
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-};
-
-export const metadata: Metadata = {
-  title: "Comment Crunch",
-  description: "Extract key insights from YouTube comments using AI",
-  icons: {
-    icon: '/favicon.ico',
-  },
 };
 
 export default function RootLayout({

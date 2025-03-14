@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { Youtube, Box, Loader } from "lucide-react"
 import type { InputProps, YouTubeInputProps, YouTubeInputSectionProps } from "@/types"
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -25,10 +26,7 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
       <div className={cn("flex flex-col sm:flex-row gap-3", className)} ref={ref}>
         <div className="flex-1 relative">
           <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-            </svg>
+            <Youtube size={20} />
           </div>
           <Input
             placeholder="https://www.youtube.com/watch?v=..."
@@ -43,28 +41,12 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
         >
           {!isLoading ? (
             <>
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className="h-4 w-4 mr-2" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              >
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
-                <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
-                <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-              </svg>
+              <Box size={16} className="mr-2" />
               <span>Crunch</span>
             </>
           ) : (
             <>
-              <div className="animate-spin h-4 w-4 mr-2 rounded-full border-2 border-red-600 border-t-transparent"></div>
+              <Loader size={16} className="mr-2 animate-spin" />
               <span>Stop</span>
             </>
           )}

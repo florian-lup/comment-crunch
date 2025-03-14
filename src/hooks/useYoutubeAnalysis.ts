@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import type { AnalysisResult } from '@/types';
+import { API_ENDPOINTS } from '@/config';
 
 /**
  * Hook for analyzing YouTube comments
@@ -31,7 +32,7 @@ export function useYoutubeAnalysis() {
       const signal = abortControllerRef.current.signal;
       
       // Step 1: Fetch comments from YouTube API
-      const commentsResponse = await fetch('/api/youtube', {
+      const commentsResponse = await fetch(API_ENDPOINTS.YOUTUBE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +49,7 @@ export function useYoutubeAnalysis() {
       const commentsData = await commentsResponse.json();
       
       // Step 2: Analyze comments using the ModelSelector endpoint
-      const analysisResponse = await fetch('/api/ModelSelector', {
+      const analysisResponse = await fetch(API_ENDPOINTS.MODEL_SELECTOR, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
