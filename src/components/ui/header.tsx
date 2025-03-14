@@ -1,12 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
-
-export interface HeaderProps {
-  title?: string;
-  description?: string;
-  tags?: string[];
-  className?: string;
-}
+import type { HeaderProps } from "@/types"
 
 const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
   ({ 

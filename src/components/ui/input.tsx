@@ -1,7 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
-
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
+import type { InputProps, YouTubeInputProps, YouTubeInputSectionProps } from "@/types"
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
@@ -19,12 +18,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 )
 Input.displayName = "Input"
-
-export interface YouTubeInputProps extends InputProps {
-  onAnalyze?: () => void;
-  onAbort?: () => void;
-  isLoading?: boolean;
-}
 
 const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
   ({ className, onAnalyze, onAbort, isLoading = false, ...props }, ref) => {
@@ -81,19 +74,6 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
   }
 )
 YouTubeInput.displayName = "YouTubeInput"
-
-export interface YouTubeInputSectionProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onAnalyze: () => void;
-  onAbort?: () => void;
-  isLoading: boolean;
-  error: string | null;
-  onSubmit: (e: React.FormEvent) => void;
-  className?: string;
-  title?: string;
-  description?: string;
-}
 
 const YouTubeInputSection = React.forwardRef<HTMLDivElement, YouTubeInputSectionProps>(
   ({ 

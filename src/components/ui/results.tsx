@@ -3,24 +3,13 @@ import { cn } from "@/lib/utils"
 import ReactMarkdown from 'react-markdown';
 import { Check, Copy } from "lucide-react";
 import rehypeRaw from 'rehype-raw';
-
-export interface AnalysisResultProps {
-  videoTitle: string;
-  analysis: string;
-  className?: string;
-}
+import { useCopyToClipboard } from "@/hooks";
+import type { AnalysisResultProps } from "@/types";
 
 const AnalysisResult = React.forwardRef<HTMLDivElement, AnalysisResultProps>(
   ({ videoTitle, analysis, className }, ref) => {
-    // State for copied code blocks
-    const [copiedCode, setCopiedCode] = React.useState<string | null>(null);
-
-    // Function to copy code to clipboard
-    const copyToClipboard = (code: string) => {
-      navigator.clipboard.writeText(code);
-      setCopiedCode(code);
-      setTimeout(() => setCopiedCode(null), 2000);
-    };
+    // Use the custom hook for copied code blocks
+    const [copiedCode, copyToClipboard] = useCopyToClipboard();
     
     // Pre-process analysis to fix potential HTML issues in blockquotes
     const processedAnalysis = analysis.replace(/<a\s+href=[^>]+>(.*?)<\/a>/g, '$1');
