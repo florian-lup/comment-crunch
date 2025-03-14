@@ -24,33 +24,38 @@ export async function POST(request: NextRequest) {
     
     // Prepare the prompt for GPT-4o
     const prompt = `
-    You are analyzing comments from the YouTube video titled: "${videoTitle}".
+    You are an expert YouTube content analyst tasked with analyzing comments from the YouTube video titled: "${videoTitle}".
     
     Here are the comments:
     
     ${commentsText}
     
-    Please provide a concise summary of these comments with the following structure:
+    Please provide a comprehensive analysis of these comments with the following structure and markdown formatting:
         
-    ## Overall Sentiment and Themes
-    (2-3 paragraphs about the general sentiment and main themes in the comments)
+    ## Overall Sentiment Analysis
+    (Write 1-2 paragraphs describing the general sentiment. Classify the overall sentiment as primarily **positive**, **negative**, **mixed**, or **neutral**. Include approximate percentages if possible. Identify the main themes and topics discussed.)
     
-    ## Key Positive Points
-    - **"Direct quote from a commenter"** - @username (Add your brief analysis if relevant)
-    - **"Another positive quote"** - @username
-    - **"Another positive quote"** - @username
+    ## Audience Engagement Overview
+    - Level of engagement (high, medium, low)
+    - Key patterns in viewer engagement
     
-    ## Key Negative Points or Criticisms
-    - **"Direct quote highlighting criticism"** - @username (Add your brief analysis if relevant)
-    - **"Another negative quote"** - @username
-    - **"Another negative quote"** - @username
+    ## Key Positive Feedback (2-3 comments)
     
-    ## Interesting Insights or Questions Raised
-    - **"Quote showing an interesting perspective"** - @username
-    - **"Another interesting quote or question"** - @username
+    > **Direct quote from a commenter** - **@username** - *Analysis explaining why this feedback is valuable*
     
-    Format the response in clean, well-structured Markdown using proper heading levels, bullet points, and emphasis for quotes and usernames.
-    Use bold for direct quotes and include the username of each commenter after their quote.
+    ## Areas for Improvement (2-3 comments)
+    
+    > **Direct quote highlighting criticism** - **@username** - *Analysis of what this criticism suggests about potential improvements*
+    
+    ## Questions or requests from viewers (2-3 comments) 
+    
+    > **Question or request from a viewer** - **@username** - *Analysis of what this question or request suggests about potential improvements*
+        
+    ## Content Opportunities
+    - 2-3 suggestions with bullet points
+    
+    ## Summary
+    (A brief concluding paragraph that summarizes the overall analysis and key takeaways)
     `;
     
     // Call OpenAI API

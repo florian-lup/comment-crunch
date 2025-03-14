@@ -47,8 +47,8 @@ export function CommentAnalyzer() {
       
       const commentsData = await commentsResponse.json();
       
-      // Step 2: Analyze comments using the analyze endpoint
-      const analysisResponse = await fetch('/api/analyze', {
+      // Step 2: Analyze comments using the ModelSelector endpoint
+      const analysisResponse = await fetch('/api/ModelSelector', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
