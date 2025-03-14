@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { UI_CONSTANTS } from "@/config";
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,6 +41,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased text-[#37352f] bg-white min-h-screen`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
