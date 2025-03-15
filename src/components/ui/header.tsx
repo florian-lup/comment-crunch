@@ -17,24 +17,24 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
     ];
     
     return (
-      <div className={cn("mt-4 sm:mt-8", className)} ref={ref}>
-        <h2 className="text-2xl sm:text-3xl font-medium mb-2 sm:mb-4">
+      <div className={cn("mt-4 sm:mt-6", className)} ref={ref}>
+        <h2 className="text-2xl sm:text-3xl font-medium mb-1 sm:mb-2">
           {title}
         </h2>
         <p className="text-gray-500 text-base sm:text-lg">
           {description}
         </p>
-        <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3">
+        <div className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2">
           {tags.map((tag, index) => (
             <span 
               key={tag} 
-              className={`rounded-md ${tagColors[index % tagColors.length]} py-1 sm:py-1.5 px-2 sm:px-3 text-xs sm:text-sm`}
+              className={`rounded-md ${tagColors[index % tagColors.length]} py-0.5 sm:py-1 px-2 sm:px-2.5 text-xs sm:text-sm`}
             >
               {tag}
             </span>
           ))}
         </div>
-        <div className="h-px bg-gray-200 mt-6 sm:mt-8 mb-4 sm:mb-6"></div>
+        <div className="h-px bg-gray-200 mt-4 sm:mt-6 mb-2 sm:mb-4"></div>
       </div>
     )
   }
