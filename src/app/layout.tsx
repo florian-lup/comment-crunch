@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   keywords: UI_CONSTANTS.DEFAULT_TAGS,
   authors: [
     {
-      name: "Comment Crunch Team",
+      name: "Florian Lup",
     },
   ],
-  creator: "Comment Crunch Team",
+  creator: "Florian Lup",
 };
 
 export const viewport: Viewport = {

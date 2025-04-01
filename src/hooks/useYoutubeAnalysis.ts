@@ -48,8 +48,8 @@ export function useYoutubeAnalysis() {
       
       const commentsData = await commentsResponse.json();
       
-      // Step 2: Analyze comments using the ModelSelector endpoint
-      const analysisResponse = await fetch(API_ENDPOINTS.MODEL_SELECTOR, {
+      // Step 2: Analyze comments using Gemini directly
+      const analysisResponse = await fetch(API_ENDPOINTS.GEMINI, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
