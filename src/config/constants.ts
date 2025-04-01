@@ -5,8 +5,6 @@
 // API related constants
 export const API_ENDPOINTS = {
   YOUTUBE: '/api/youtube',
-  MODEL_SELECTOR: '/api/ModelSelector',
-  OPENAI: '/api/openai',
   GEMINI: '/api/gemini',
 };
 
@@ -19,6 +17,5 @@ export const UI_CONSTANTS = {
 
 // Feature flags
 export const FEATURES = {
-  ENABLE_OPENAI: true,
   ENABLE_GEMINI: true,
 }; 

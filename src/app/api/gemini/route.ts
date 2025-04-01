@@ -58,11 +58,16 @@ export async function POST(request: NextRequest) {
     
     // Get the model
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.0-flash" // Using Gemini 2.0 Flash
+      model: "gemini-2.0-flash", // Using Gemini 2.0 Flash
     });
     
     // Call Gemini API
-    const result = await model.generateContent(prompt);
+    const result = await model.generateContent({
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.5,
+      },
+    });
     const response = await result.response;
     const analysis = response.text();
     
