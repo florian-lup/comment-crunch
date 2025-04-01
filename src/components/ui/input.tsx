@@ -1,6 +1,8 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
-import { Youtube, Box, Loader } from "lucide-react"
+import { FaYoutube } from "react-icons/fa"
+import { IoCube } from "react-icons/io5";
+import { PiSpinnerBold  } from "react-icons/pi"
 import type { InputProps, YouTubeInputProps, YouTubeInputSectionProps } from "@/types"
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -26,7 +28,7 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
       <div className={cn("flex flex-col sm:flex-row gap-3", className)} ref={ref}>
         <div className="flex-1 relative">
           <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-            <Youtube size={20} />
+            <FaYoutube size={20} />
           </div>
           <Input
             placeholder="https://www.youtube.com/watch?v=..."
@@ -41,12 +43,12 @@ const YouTubeInput = React.forwardRef<HTMLDivElement, YouTubeInputProps>(
         >
           {!isLoading ? (
             <>
-              <Box size={16} className="mr-2" />
+              <IoCube size={16} className="mr-2" />
               <span>Crunch</span>
             </>
           ) : (
             <>
-              <Loader size={16} className="mr-2 animate-spin" />
+              <PiSpinnerBold size={16} className="mr-2 animate-spin" />
               <span>Stop</span>
             </>
           )}

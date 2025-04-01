@@ -1,7 +1,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import ReactMarkdown from 'react-markdown';
-import { Check, Copy } from "lucide-react";
+import { FaCheck, FaCopy } from "react-icons/fa";
 import rehypeRaw from 'rehype-raw';
 import { useCopyToClipboard } from "@/hooks";
 import type { AnalysisResultProps } from "@/types";
@@ -88,7 +88,7 @@ const AnalysisResult = React.forwardRef<HTMLDivElement, AnalysisResultProps>(
                           className="text-slate-400 hover:text-white transition-colors p-1 rounded"
                           aria-label="Copy code"
                         >
-                          {copiedCode === code ? <Check size={14} /> : <Copy size={14} />}
+                          {copiedCode === code ? <FaCheck size={14} /> : <FaCopy size={14} />}
                         </button>
                       </div>
                       <pre className="p-4 overflow-x-auto">

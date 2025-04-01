@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Github, Mail } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 export function Footer() {
   return (
@@ -9,12 +10,12 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center relative w-full max-w-4xl">
           <div className="absolute -top-4 left-0 right-0 h-px bg-gray-200"></div>
           <div className="flex items-center gap-2 mb-4 sm:mb-0">
-            <div className="bg-gray-100 rounded-md p-1.5">
+            <div className="p-1.5">
               <Image 
                 src="/logo.svg" 
                 alt="Comment Crunch Logo" 
-                width={16} 
-                height={16} 
+                width={20} 
+                height={20} 
               />
             </div>
             <p className="text-sm text-gray-500">
@@ -23,11 +24,11 @@ export function Footer() {
           </div>
           <div className="flex items-center">
             <a href="https://github.com/florian-lup/comment-crunch" className="text-gray-500 hover:text-gray-800 transition-colors" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-              <Github size={16} />
+              <FaGithub size={16} />
             </a>
             <div className="h-8 w-px bg-gray-200 mx-3"></div>
             <a href="mailto:contact@florianlup.com" className="text-gray-500 hover:text-gray-800 transition-colors" aria-label="Email">
-              <Mail size={16} />
+              <MdEmail size={16} />
             </a>
           </div>
         </div>
